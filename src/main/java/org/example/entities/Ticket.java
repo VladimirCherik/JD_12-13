@@ -1,6 +1,9 @@
 package org.example.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -9,6 +12,9 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ticket")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +39,11 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "TICKET:\n" +
+        return "\nTICKET:\n" +
                 "id = " + id +",\n"+
                 "createdAt = " + createdAt +",\n"+
                 "client = " + client.getName() +",\n"+
-                "fromPlanetId = " + fromPlanet.getName() +",\n"+
-                "toPlanetId = " + toPlanet.getName() + ".";
+                "fromPlanet = " + fromPlanet.getName() +",\n"+
+                "toPlanet = " + toPlanet.getName() + ".";
     }
-
-
-
 }
